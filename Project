@@ -1,0 +1,125 @@
+load('Data001.mat');
+data = Data001;
+plot(data(1:69,1),data(1:69,2))
+ylim([15.0,45.0])
+xlim([4368,5088])
+xlabel('Time(hour)')
+ylabel('Temperature C')
+numbers = importdata('Comperessor performance table.csv');
+temp_of_amb = data(1:69,2);
+time = round(data(1:69,1));
+temp_of_condensor = temp_of_amb +5;
+temp_of_evaporator = [5,8];
+QL5degrees = numbers(1:3,11);
+QLfor7degrees = numbers(1:3,12);
+Wfor5degrees = numbers(4:6,11);
+Wfor7degrees = numbers(4:6,12);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],30);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],31);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],32);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],33);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],34);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],35);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],36);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],37);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],38);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],39);
+Qincond35 = interp1([30,40],[QL5degrees(1:2,1),QLfor7degrees(1:2,1)],40);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],41);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],42);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],43);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],44);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],45);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],46);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],47);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],48);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],49);
+Qincond45 = interp1([40,50],[QL5degrees(2:3,1),QLfor7degrees(2:3,1)],50);
+cooling_activation_temp = 18;
+
+numbers_lost_5 = [8.364,8.206,8.049,7.891,7.733,7.575,7.418,7.26,7.17,7.08,6.99,6.9,6.81,6.72,6.63,6.54,6.45,6.36,6.262,6.1640,6.066,5.968,5.87,5.772,5.674,5.5760,5.4780,5.39];
+numbers_lost_7 = [8.776,8.588,8.44,8.332,8.184,8.036,7.888,7.74,7.644,7.548,7.452,7.356,7.26,7.164,7.068,6.9720,6.876,6.78,6.675,6.57,6.465,6.36,6.255,6.15,6.045,5.94,5.835,5.73];
+avg_Qnumbers_5 = 6.33952380952;
+avg_Qnumbers_7 = 6.75642857143;
+Qnumbers5 = numbers_lost_5';
+Qnumbers7 = numbers_lost_7';
+
+
+
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],30);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],31);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],32);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],33);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],34);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],35);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],36);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],37);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],38);
+Workin5degrees = interp1([30,40],[Wfor5degrees(1:2,1),Wfor7degrees(1:2,1)],39);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],40);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],41);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],42);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],43);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],44);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],45);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],46);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],47);
+workin7degrees =interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],48);
+workin7degrees =interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],49);
+workin7degrees = interp1([40,50],[Wfor5degrees(2:3,1),Wfor7degrees(2:3,1)],50);
+
+Workin5degrees_numbs = [-1.156,-0.705,-0.254,0.197,0.648,1.098,1.549,2,2.02,2.04,2.06,2.08,2.1,2.12,2.14,2.16,2.18,2.2,2.227,2.254,2.2810,2.308,2.335,2.362,2.389,2.416,2.443,2.47];
+workin7degrees_numbs = [-1.03,-0.59,-0.15,0.29,0.73,1.17,1.61,2.05,2.071,2.092,2.113,2.134,2.155,2.1760,2.1970,2.218,2.239,2.26,2.286,2.312,2.338,2.364,2.39,2.416,2.442,2.468,2.494,2.52];
+Wnumbers5 = Workin5degrees_numbs';
+Wnumbers7 = workin7degrees_numbs';
+avg_Wnumbers_5 = 2.21833333333;
+avg_Wnumbers_7 = 2.2730952381;
+
+plot([Qnumbers5,Wnumbers5])
+xlabel("Charge lost")
+ylabel("Work")
+xlim([1,27])
+ylim([-1,9])
+title("Charge versus Work when evaporator at 5 degrees")
+
+plot([Qnumbers7,Wnumbers7])
+xlabel("Charge lost ")
+ylabel("Work")
+xlim([1,27])
+ylim([-1,9])
+title("Charge versus Work when evaporator at 7 degrees")
+
+
+plot([QLfor5degrees,Wfor5degrees])
+xlabel("Q lost when evaporator temp is 5 degrees")
+ylabel("Work done in evaporator at 5 degrees")
+title("Condendsor performance with evaporator at 5 degrees")
+legend("Work Done","Charge Lost")
+
+plot([QLfor7degrees,Wfor7degrees])
+xlabel("Q Lost when evaporator temp is 7 degrees")
+ylabel("Work done in evaporator at 7 degrees")
+title("Condendsor performance with evaporator at 7 degrees")
+legend("Work Done","Charge Lost")
+
+TotalLw5 = 2+2.2+2.47;
+TotalLw7 = 2.05+2.26+2.52;
+TotalQl5 = 7.26+6.36+5.38;
+TotalQl7 = 7.74+6.78+5.73;
+
+degree5COP = TotalQl5 / TotalLw5;
+degree7COP = TotalQl7 / TotalLw7;
+
+%Cost Computation
+COrefridgerationAverage = 0.24; % $/ kiloWatt hour
+LowCOrefrigeration = 0.18; % $/ kiloWatt hour
+HighCOrefrigeration = 0.29; % $/ kilowatt hour
+www.energysage.com
+lowcost5 = degree5COP*LowCOrefrigeration;
+averC5 = degree5COP*COrefridgerationAverage;
+highcost5 = degree5COP*HighCOrefrigeration;
+lowcost7 = degree7COP*LowCOrefrigeration;
+averC7 = degree7COP*COrefridgerationAverage;
+highCost7 = degree7COP*HighCOrefrigeration;
+disp("The evaporator is at 5 degrees when the lowest cost is $0.51 per kWhr. Average cost when the Evaporator is at 5 degrees is $0.68 per kWhr. When the Evaporator is at 5 degrees, The high cost is $0.83 kWhr.")
+disp("The evaporator is at 7 degrees when the lowest cost is $0.53 per kWhr, Average cost when the evaporator is at 7 degrees is $0.71 per kWhr, The high cost when the evaporator is at 7 degrees is $0.86 per kWhr ")
